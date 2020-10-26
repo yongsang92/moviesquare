@@ -1,0 +1,6 @@
+spring: 
+    application.name : japan
+    profiles.active : default
+    clioud.config.uri: http://localhost:8888
+
+server.port : 8082
