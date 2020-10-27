@@ -1,0 +1,59 @@
+.gifs h1{    
+    margin: 30px 0px 30px 10px;
+    border-top: 10px;
+    border-bottom: 10px;   
+}
+
+h1{
+    width: 1080px;
+    left: 100px;
+    margin: auto;  
+   
+}  
+#seperate{             
+    height: 3px;
+    color: aquamarine;
+    width: 1120px;           
+    margin: auto; 
+    text-align: center; 
+    margin-bottom: 50px; 
+}
+
+
+.relstories{ 
+    width: 1200px; 
+    left: 20px;
+    margin: auto; 
+} 
+#title {
+  
+   font-size: 80;   
+   font-weight: bolder;
+}
+#date{
+   color: white;   
+   font-size: larger;  
+   font-weight: bolder;
+}
+.gifs {
+
+   width: 1100px;
+   margin: auto;
+
+}
+
+video{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.blog-img video{
+    border-radius: 20px;
+    border: 1px solid palevioletred;
+
+
+
+}

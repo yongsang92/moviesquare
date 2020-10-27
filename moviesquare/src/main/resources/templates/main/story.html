@@ -1,0 +1,160 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/css/story.css">
+
+    <link rel="stylesheet" href="/css/story/style.css">
+</head>
+
+<body>
+    <div th:insert="~{header_footer/header::header}"></div>
+    <div th:insert="~{main/wall::wall}"></div>
+
+
+    <h1 id="title"></h1>
+    <h1 id="date"></h1>
+    <div class="gifs"></div>
+
+
+
+    <section class="blogs-area section-padding30">
+        <hr id="seperate" size="3">
+        <h1 style="color: aliceblue; ">관련 스토리</h1>
+        <div class="container">
+            <div id="relstoriesContainer" class="row">
+             
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+    <div th:insert="~{header_footer/footer::footer}"></div>
+    <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+
+
+</body>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+
+
+
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        $('#title').css('color', randomColor);
+
+        let moviesOfStory = [[${ story }]];
+        let from = [[${ from }]];
+        let relstories = [[${ relstories }]];
+
+        let storyInfo = moviesOfStory[0].title.split(",");
+
+
+
+        let datetime = document.querySelector("#date").innerHTML = storyInfo[0];
+        let date = datetime.split("T")[0];
+        datetime.indexOf("T");
+        datetime.indexOf(".");
+
+        let time = datetime.substring(datetime.indexOf("T") + 1, datetime.indexOf("."));
+
+
+        document.querySelector("#date").innerHTML = date + " " + time;
+        document.querySelector("#title").innerHTML = storyInfo[1];
+
+
+        let gifContainer = document.querySelector('.gifs');
+        for (let i = 0; i < moviesOfStory.length; i++) {
+            let movie = moviesOfStory[i];
+
+
+            let aTag = document.createElement("a");
+            aTag.setAttribute("href", "http://localhost:8080/" + from + "/movie/" + movie.id);
+
+            let videoContainer = document.createElement("div");
+            videoContainer.setAttribute("width", 200);
+
+            let video = document.createElement("video");
+            video.setAttribute("width", 900);
+            video.muted = true;
+            video.loop = true;
+            video.autoplay = true;
+            video.setAttribute("src", "data:video/mp4;base64," + movie.imgbyteArray);
+            video.setAttribute("type", "video/mp4");
+
+            let videoComment = document.createElement("h1");
+            videoComment.innerHTML = movie.comments;
+            videoComment.setAttribute("style", "color: aliceblue;");
+
+
+            videoContainer.appendChild(video);
+            videoContainer.appendChild(videoComment);
+
+            aTag.appendChild(videoContainer);
+            let item = document.createElement("div");
+            item.appendChild(aTag);
+
+            gifContainer.appendChild(aTag);
+        }
+
+
+
+        let relstoriesContainer = document.querySelector('#relstoriesContainer');
+
+     
+
+        for (let i = 0; i < relstories.length; i++) {
+
+            let story = relstories[i];
+
+            let box = document.createElement("div");
+            box.setAttribute("class", "col-lg-4 col-md-6");
+
+            let stuff = document.createElement("div");
+            stuff.setAttribute("class", "single-blogs mb-100");
+
+            let videoContainer = document.createElement("div");
+            videoContainer.setAttribute("class", "blog-img");
+
+
+            let video = document.createElement("video");
+            video.setAttribute("width", 330);
+            video.setAttribute("height", 180);
+            video.muted = true;
+            video.loop = true;
+            video.autoplay = true;
+            video.setAttribute("src", "data:video/mp4;base64," + story.imgbyteArray);
+            video.setAttribute("type", "video/mp4");
+
+            videoContainer.appendChild(video);
+
+
+            let dateWithComment = document.createElement("div");
+            dateWithComment.setAttribute("class", "blog-cap");
+
+
+            let date = document.createElement("span");
+            date.setAttribute("class", "color1");
+            date.innerHTML = (story.updatedate).split("T")[0];
+
+            let storyTitle = document.createElement("h4");
+            let aTag = document.createElement("a");
+
+            var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            aTag.setAttribute("href", "http://localhost:8080/main/story/" + from + "/" + story.id);
+            aTag.innerHTML = "<span style=\"color:black\">" + story.title;
+            storyTitle.appendChild(aTag);
+
+
+            dateWithComment.appendChild(date);
+            dateWithComment.appendChild(storyTitle);
+
+            stuff.appendChild(videoContainer);
+            stuff.appendChild(dateWithComment);
+            box.appendChild(stuff);
+            relstoriesContainer.appendChild(box);
+
+        }
+    </script>
+</th:block>
+
+</html>

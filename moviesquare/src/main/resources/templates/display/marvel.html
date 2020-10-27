@@ -1,0 +1,132 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/css/homepage.css">
+
+</head>  
+
+<body>
+    <div class="asd" th:insert="~{header_footer/header::header}"></div>
+    <div th:insert="~{main/wall::wall}"></div>
+
+    <div id='gifs' class='gifs' style="width: 900px; height: 900px; "></div>
+    <div th:insert="~{header_footer/footer::footer}"></div>
+
+</body>
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/jquery.lazy.min.js}"></script>
+<script th:src="@{/js/jquery.lazy.plugins.min.js}"></script>
+<script th:src="@{/js/waterfall.min.js}"></script>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+   $(window).resize(function () {
+            waterfall('.gifs');
+        });
+        let gifs = document.querySelector(".gifs");
+        let movies = [[${ movies }]];
+        let total = [[${ total }]];
+        let count = movies.length;
+        let pageNum = 1;
+        for (let i = 0; i < movies.length; i++) {
+            let movie = movies[i];
+            let dfv = document.createElement("dfv"); // div for video
+            dfv.setAttribute("width", 248);
+            dfv.setAttribute("class", dfv);
+
+            let aTag = document.createElement("a");
+            aTag.setAttribute("href", "http://localhost:8080/usa/movie/" + movie.id);
+
+            let video = document.createElement("video");
+            video.setAttribute("width", 248);
+
+            video.muted = true;
+            video.loop = true;
+            video.autoplay = true;
+
+            let source = document.createElement("source");
+            source.setAttribute("src", "data:video/mp4;base64," + movie.imgbyteArray);
+            source.setAttribute("type", "video/mp4");
+            source.setAttribute("class", "lazy lazy" + i % 5);
+
+            video.appendChild(source);
+
+            dfv.appendChild(video);
+
+            aTag.appendChild(dfv);
+            gifs.appendChild(aTag);
+
+        }
+        $('.lazy').Lazy({
+            afterLoad: function () {
+                waterfall('.gifs');
+            }
+        });
+        waterfall('.gifs'); // 맨처음에 가져온것들은 한번 더해야 lainfall이 적용되네 이상하다
+
+
+        let callFlag = 0;
+        $(function () {
+            $(window).scroll(function () {
+                waterfall('.gifs');
+                let $window = $(this);
+                let scrollTop = $window.scrollTop();
+                let windowHeight = $window.height();
+                let documentHeight = $(document).height();
+                if (scrollTop + windowHeight >= documentHeight) {
+                    if ((total > count) && callFlag == 0) {
+                        callFlag = 1; // 호출중복 방지 Flag
+                        $.ajax({
+                            url: '/marvel/add',
+                            type: 'get',
+                            data: {
+                                page: pageNum
+                            },
+                            success: function (data) {
+                                let result = document.querySelector('.gifs');
+                                for (let i = 0; i < data.length; i++) {
+                                    let movie = data[i];
+                                    let dfv = document.createElement("dfv"); // div for video
+                                    dfv.setAttribute("width", 248);
+                                    dfv.setAttribute("class", dfv);
+
+                                    let aTag = document.createElement("a");
+                                    aTag.setAttribute("href", "http://localhost:8080/usa/movie/" + movie.id);
+
+                                    let video = document.createElement("video");
+                                    video.setAttribute("width", 248);
+
+                                    video.muted = true;
+                                    video.loop = true;
+                                    video.autoplay = true;
+
+                                    let source = document.createElement("source");
+                                    source.setAttribute("src", "data:video/mp4;base64," + movie.imgbyteArray);
+                                    source.setAttribute("type", "video/mp4");
+                                    source.setAttribute("class", "lazy lazy" + i % 5);
+
+                                    video.appendChild(source);
+
+                                    dfv.appendChild(video);
+
+                                    aTag.appendChild(dfv);
+                                    gifs.appendChild(aTag);
+                                    count++;
+
+                                }
+                                $('.lazy').Lazy();
+                                waterfall('.gifs');
+                                callFlag = 0;
+                            }
+                        });
+                        pageNum++;
+
+
+                    }
+                }
+
+            });
+        });
+    </script>
+</th:block>
+
+</html>

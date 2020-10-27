@@ -1,0 +1,283 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        label {
+            color: white;
+        }
+
+        input.form-control {
+            font-size: larger;
+        }
+
+        .browse-button {
+            margin-left: 350px;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Story upload</title>
+    <link rel="stylesheet" href="/css/upload/upload.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/jquery.tagsinput-revisited.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div th:insert="~{header_footer/header::header}"></div>
+    <div th:insert="~{main/wall::wall}"></div>
+    <div class="container">
+
+        <p style="font-size: larger; color: white;" class="h2 text-center">스토리 등록</p>
+        <form class="top" id="form" action="/uploadStory" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label style="font-size: larger; color: white;">스토리 제목</label>
+                <input class="form-control" type="text" name="title" placeholder="제목" />
+                <span class="Error"></span>
+            </div>
+            <div class="form-group">
+                <label>나라</label><br />
+                <label><input type="radio" name="nation" value="KOR" checked /> KOR</label>
+                <label><input type="radio" name="nation" value="USA" /> USA</label>
+                <label><input type="radio" name="nation" value="JAPAN" /> JAPAN</label>
+                <label><input type="radio" name="nation" value="MARVEL" /> MARVEL</label>
+                <span class="Error"></span>
+            </div>
+
+            <div class="preview text-center">
+                <div class="preview" id="preview0">
+                    <img class="preview-gif"
+                        src="https://www.freepngimg.com/thumb/video_camera/28976-9-camera-icon-free.png"
+                        alt="Preview Image" width="400" height="300" />
+                    <video hidden class="preview-mp4" muted autoplay loop width="250" height="200" src=""></video>
+                </div>
+                <div class="browse-button">
+                    <input class="browse-input" type="file" name="file" onchange="previewImg()" id="file0" />
+                </div>
+                <span class="Error"></span>
+
+                <div class="form-group">
+                    <label>움짤 제목</label>
+                    <input class="emptycheck form-control" type="text" name="imgTitle" placeholder="제목" />
+                    <span class="Error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>내용</label>
+                    <input class="form-control" type="text" name="gifComments" placeholder="내용(OPTION)" />
+                    <span class="Error"></span>
+                </div>
+                <div class="form-group">
+                    <label>태그</label>
+                    <input class="emptycheck form-control tags" type="text" name="tags" />
+                    <span class="Error"></span>
+                </div>
+            </div>
+
+            <div class="preview text-center">
+                <div class="preview" id="preview1">
+                    <img class="preview-gif"
+                        src="https://www.freepngimg.com/thumb/video_camera/28976-9-camera-icon-free.png"
+                        alt="Preview Image" width="400" height="300" />
+                    <video hidden class="preview-mp4" muted autoplay loop width="250" height="200" src=""></video>
+                </div>
+                <div class="browse-button">
+                    <input class="emptycheck browse-input" type="file" name="file" onchange="previewImg()" id="file1" />
+                </div>
+                <span class="Error"></span>
+
+                <div class="form-group">
+                    <label>움짤 제목</label>
+                    <input class="emptycheck form-control" type="text" name="imgTitle" placeholder="제목" />
+                    <span class="Error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>내용</label>
+                    <input class="form-control" type="text" name="gifComments" placeholder="내용(OPTION)" />
+                    <span class="Error"></span>
+                </div>
+                <div class="form-group">
+                    <label>태그</label>
+                    <input class="emptycheck form-control tags" type="text" name="tags" />
+                    <span class="Error"></span>
+                </div>
+            </div>
+            <section class="show">
+                <script type="myTemplate" id="listTemplate">
+                    <div class="preview text-center" id="section{{id}}">
+                        <div class="preview" id="preview{{id}}">
+                            <img class="preview-gif"
+                                src="https://www.freepngimg.com/thumb/video_camera/28976-9-camera-icon-free.png"
+                                alt="Preview Image" width="400" height="300" />
+                            <video hidden class="preview-mp4" muted autoplay loop width="250" height="200" src=""></video>
+                        </div>
+                        <div class="browse-button">
+                            <input class="emptycheck browse-input" type="file" name="file" onchange="previewImg()" id="file{{id}}" />
+                        </div>
+                        <span class="Error"></span>
+                    
+                        <div class="form-group">
+                            <label>움짤 제목</label>
+                            <input class="emptycheck form-control" type="text" name="imgTitle" placeholder="제목" />
+                            <span class="Error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>내용</label>
+                            <input class="form-control" type="text" name="gifComments" placeholder="내용(OPTION)" />
+                            <span class="Error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>태그</label>
+                            <input class="emptycheck form-control tags" type="text" name="tags"/>
+                            <span class="Error"></span>
+                        </div>    
+                    </div>
+                </script>  
+            </section>
+        </form>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="button" id="imgInsert" onclick="addImg()">움짤 추가 </button>
+            <button class="btn btn-primary btn-block" type="button" id="imgRemove" onclick="removeImg()">움짤 제거 </button>
+            <button class="btn btn-primary btn-block" type="button" id="upload" onclick="sumbit()">등록</button>
+        </div>
+    </div>
+    <div th:insert="~{main/wall::wall}"></div>
+    <div th:insert="~{header_footer/footer::footer}"></div>
+</body>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/jquery.lazy.min.js}"></script>
+<script th:src="@{/js/jquery.lazy.plugins.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/bootstrap-tagsinput.min.js}"></script>
+<script th:src="@{/js/jquery.tagsinput-revisited.js}"></script>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+
+
+        $('.tags').tagsInput({
+            interactive: true,
+            placeholder: '콤마를 이용해서 태그를 분리하세요',
+            width: 'auto',
+            height: 'auto',
+            hide: true,
+            delimiter: ',',
+            validationPattern: new RegExp('^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣a-zA-Z0-9\\s]+$'),
+            removeWithBackspace: true,
+            whitelist: null
+        });
+
+
+
+        function previewImg() {
+            let fileId = (event.srcElement.id).substring(4);
+            let file = document.querySelector("#file" + fileId).files[0];
+            let fileType = file.name.slice(-3);
+            let reader = new FileReader();
+            let preview = document.querySelector("#preview" + fileId);
+            let gif = preview.children[0];
+            let mp4 = preview.children[1];
+            if (fileType == "gif") {
+
+                reader.addEventListener("load", function () {
+
+                    gif.hidden = false;
+                    mp4.hidden = true;
+                    gif.src = reader.result;
+                }, false);
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            } else if (fileType == "mp4") {
+                reader.addEventListener("load", function () {
+
+                    gif.hidden = true;
+                    mp4.hidden = false;
+                    mp4.src = reader.result;
+                }, false);
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            } else {
+                alert("mp4, gif 파일을 첨부해주세요");
+                file.value = "";
+                gif.src = "https://www.freepngimg.com/thumb/video_camera/28976-9-camera-icon-free.png";
+                gif.hidden = false;
+                mp4.hidden = true;
+            }
+        }
+
+        let num = 1;
+
+        function tagReload() {
+            $(".tags").tagsInput({
+                interactive: true,
+                placeholder: '콤마를 이용해서 태그를 분리하세요',
+                width: 'auto',
+                height: 'auto',
+                hide: true,
+                delimiter: ',',
+                validationPattern: new RegExp('^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣a-zA-Z0-9\\s]+$'),
+                removeWithBackspace: true,
+                whitelist: null
+            });
+  
+        }
+
+        function addImg() {
+            num++;
+            var template = document.querySelector("#listTemplate").innerText;
+            var bindTemplate = Handlebars.compile(template);
+            var data = {
+                "id": num,
+                "tag": num
+            };
+            var resultHtml = bindTemplate(data);
+            var show = document.querySelector(".show");
+            show.innerHTML += resultHtml;
+            tagReload();
+        }
+
+
+        function removeImg() {
+            if (num > 1) {
+                $("#section" + num).remove();
+                num--;
+            }
+        }
+
+        function sumbit() {
+            var items = document.querySelectorAll('.emptycheck');
+            for (var i = 0; i < items.length; i++) {
+                let empty = items[i].value;
+                if (empty == "") {
+                    alert("모든 항목을 입력해주세요");
+                    return;
+                }
+            }
+            $("#form").submit();
+        }
+
+
+
+
+
+    </script>
+</th:block>
+
+
+</html>

@@ -1,6 +1,6 @@
 spring: 
-    application.name : japan
+    application.name : japanservice
     profiles.active : default
-    clioud.config.uri: http://localhost:8888
+    cloud.config.uri: http://localhost:8888
 
-server.port : 8082
+management.endpoints.web.exposure.include : health,metrics,env

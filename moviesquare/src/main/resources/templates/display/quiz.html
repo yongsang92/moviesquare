@@ -1,0 +1,167 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>영화 퀴즈</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div th:insert="~{header_footer/header::header}"></div>
+    <div th:insert="~{main/wall::wall}"></div>
+
+    <div class="movieContainer">
+
+
+    </div>
+    <input id="answer" onKeyPress="if( event.keyCode==13 ){submit();}" type="text" style="font-size: larger;"
+        name="title" placeholder="정답 입력" />
+    <!-- <button onclick="submit()"style="color: blue; font-size: larger;">정답</button> -->
+
+    <button onclick="getHint()" style="color: blue; font-size: larger;">힌트</button>
+
+
+
+    <div th:insert="~{header_footer/footer::footer}"></div>
+
+</body>
+<script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{/js/jquery.lazy.min.js}"></script>
+<script th:src="@{/js/jquery.lazy.plugins.min.js}"></script>
+<script th:src="@{/js/waterfall.min.js}"></script>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        let movies = [[${ movies }]];
+
+        let movieContainer = document.querySelector(".movieContainer");
+
+        console.log("갯수");
+        console.log(movies.length);
+
+
+        let point = 0;
+
+        let hintRequest = 3;
+
+        let count = 0;
+
+
+        displayGif();
+
+        function displayGif() {
+            if (count == movies.length) {
+                quizTestResult();
+            } else {
+                let movie = movies[count];
+                let video = document.createElement("video");
+                video.setAttribute("width", 300);
+                video.setAttribute("height", 300);
+                video.muted = true;
+                video.loop = true;
+                video.autoplay = true;
+                video.setAttribute("src", "data:video/mp4;base64," + movie.imgbyteArray);
+                video.setAttribute("type", "video/mp4");
+                movieContainer.appendChild(video);
+            }
+        }
+
+        function quizTestResult() {
+            // 컨테이너에 최종 점수 보여주기
+
+            alert("최종 점수 : " + point);
+            alert("끝");
+            return;
+        }
+
+
+        function checkAnswer(answer, title) {
+            let a = answerTrim(answer);
+            let b = answerTrim(title);
+
+            if (a == b) {
+                point += 1 + hintRequest * 1;
+                alert("정답");
+            } else {
+                alert("오답");
+            }
+        }
+
+        function answerTrim(answer) {
+            return answer.replace(/(\s*)/g, "");
+        }
+
+        function getHint() {
+            let movie = movies[count];
+            let title = movie.title;
+
+            if (hintRequest == 3) {
+                getChosung(title);
+            }
+            else if (hintRequest == 2) {
+                getFirstAndLastWord(title);
+            }
+            else if (hintRequest == 1) {
+                getOneMoredisplayGif();
+            }
+            else {
+
+            }
+        }
+
+
+        function getChosung(title) {
+            hintRequest--;
+            cho = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
+            result = "";
+            for (i = 0; i < title.length; i++) {
+                code = title.charCodeAt(i) - 44032;
+                if (code > -1 && code < 11172) result += cho[Math.floor(code / 588)];
+                else result += title.charAt(i);
+            }
+            // 화면에 뿌려주기
+            console.log(result);
+            return result;
+        }
+        function getFirstAndLastWord(title) {
+            hintRequest--;
+            let first = title.charAt(0);
+            let last = title.charAt(title.length - 1);
+            let firstAndLast = "첫글자 : " + first + " 마지막 글자 : " + last;
+            // 화면에 뿌려주기
+            console.log(firstAndLast);
+            return firstAndLast;
+        }
+
+        function getOneMoredisplayGif() {
+            hintRequest--;
+            let movie = movies[count + 1];
+            let video = document.createElement("video");
+            video.setAttribute("width", 300);
+            video.setAttribute("height", 300);
+            video.muted = true;
+            video.loop = true;
+            video.autoplay = true;
+            video.setAttribute("src", "data:video/mp4;base64," + movie.imgbyteArray);
+            video.setAttribute("type", "video/mp4");
+            movieContainer.appendChild(video);
+
+        }
+        function submit() {
+            let answer = document.querySelector("#answer").value;
+            if(answer==""){
+                alert("정답을 입력해 주세요");
+                return;
+            }
+            let movie = movies[count];
+            document.querySelector("#answer").value = "";
+            checkAnswer(answer, movie.title);
+            hintRequest = 3;
+            count += 2;
+            movieContainer.innerHTML = '';
+            displayGif();
+        }
+    </script>
+</th:block>
+
+</html>

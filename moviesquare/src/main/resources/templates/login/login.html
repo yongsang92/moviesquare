@@ -1,0 +1,93 @@
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <stlye>
+        <link rel="stylesheet" href="/css/login.css">
+    </stlye>
+</head>
+<body>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pr-wrap">
+                    <div class="pass-reset">
+                        <label>
+                            Enter the email you signed up with</label>
+                        <input type="text" placeholder="Email" />
+                        <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                    </div>
+                </div>            
+                <div class="wrap">   
+                    <p class="form-title"> 로그인 </p>
+                    <form class="login" method="post" th:action="@{/login}">
+                        <input type="text" id="name" name="username" placeholder="아이디" required />
+                        <input type="password" id="pw" name="password" placeholder="비밀번호" required />
+                        <input type="submit" value="로그인" class="btn btn-success btn-sm" />
+                    </form>
+                </div>
+            </div>
+        </div>   
+    </div>   
+
+    <script>     
+   
+      
+
+        // 공백 확인
+        function checkSpace(str) {
+            if (str.search(/\s/) != -1) {
+                alert("공백이 포함되어있습니다");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // 특수 문자 확인
+        function checkSpecial(str) {
+            var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+            if (special_pattern.test(str) == true) {
+                alert("특수 문자가 포함되어있습니다");
+                return true;
+            }
+            else {
+                return false;
+            }  
+        }
+        $("#name").blur(function () {
+            let value = document.querySelector("#name").value;
+            if (checkSpace(value)) {
+                document.querySelector("#name").value = "";
+            }
+            if (checkSpecial(value)) {
+                document.querySelector("#name").value = "";
+            }
+        });
+
+        $("#pw").blur(function () {
+            let value = document.querySelector("#pw").value;
+            if (checkSpace(value)) {
+                document.querySelector("#pw").value = "";
+            } if (checkSpecial(value)) {
+                document.querySelector("#pw").value = "";
+            }
+        });
+
+        $(document).ready(function () {
+            $('.forgot-pass').click(function (event) {
+                $(".pr-wrap").toggleClass("show-pass-reset");
+            });
+
+            $('.pass-reset-submit').click(function (event) {
+                $(".pr-wrap").removeClass("show-pass-reset");
+            });
+        });
+    </script>
+</body>
+
+</html>

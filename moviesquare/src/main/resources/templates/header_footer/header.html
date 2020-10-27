@@ -1,0 +1,178 @@
+<div th:fragment="header">
+
+    <html xmlns:th="http://wwww.thymeleaf.org" class="no-js" lang="zxx"
+        xmlns:sec="http://wwww.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/css/slicknav.css">
+        <link rel="stylesheet" href="/css/flaticon.css">
+        <link rel="stylesheet" href="/css/progressbar_barfiller.css">
+        <link rel="stylesheet" href="/css/gijgo.css">
+        <link rel="stylesheet" href="/css/animate.min.css">
+        <link rel="stylesheet" href="/css/animated-headline.css">
+        <link rel="stylesheet" href="/css/magnific-popup.css">
+        <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/css/themify-icons.css">
+        <link rel="stylesheet" href="/css/slick.css">
+        <link rel="stylesheet" href="/css/nice-select.css">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body style="width: 1500px; margin: auto; text-align: center; background-color:#2D0A31">
+
+
+    <!-- ? Preloader Start -->
+
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="/imgs/logo/loder.png" alt="">
+                    
+                </div>
+            </div>
+        </div>       
+    </div>  
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div style="width: 2000px; margin: auto; text-align: center;" class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">     
+                          
+                            <div class="col-xl-10 col-lg-10">  
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->  
+                                    <div class="main-menu d-none d-lg-block">    
+                                        <nav>            
+                                            <ul id="navigation">
+                                                <li><a href="/main">홈</a></li>  
+                                                <li><a id="login" href="/loginhandler">로그인</a></li>
+                                                <li><a href="/join">회원가입</a></li>  
+                                                <li><a href="/makegif">움짤 등록</a></li>  
+                                                <li><a href="/makestory">스토리 등록</a></li>
+                                                <li><a href="#">나라별 움짤</a> 
+                                                    <ul class="submenu"> 
+                                                        <li><a href="/korea/movies">한국</a></li>
+                                                        <li><a href="/usa/movies">미국</a></li>
+                                                        <li><a href="/japan/movies">일본</a></li>
+                                                        <li><a href="/marvel/movies">마블</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <form action="/by" method="GET" class="button-header search-box">  
+                                                        <div class="input-form"> 
+                                                            <input name="tag" type="text" placeholder="검색">
+                                                            <!-- icon search -->
+                                                            <div class="search-form">
+                                                                <button><i class="ti-search"></i></button>
+                                                            </div>
+                                                            <!-- icon search -->
+                                                            <div class="world-form">
+                                                                <i class="fas fa-film"></i>
+                                                            </div>
+                                                        </div>
+                                                    </form> 
+                                                </li>
+                                            </ul>  
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+   
+        </div>
+
+        <!-- Domain-search End -->
+        <!-- Header End -->
+    </header>
+
+
+    <!-- JS here -->
+
+    <script src="/jss/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->  
+    <script src="/jss/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/jss/popper.min.js"></script>
+    <script src="/jss/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="/jss/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="/jss/owl.carousel.min.js"></script>
+    <script src="/jss/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="/jss/wow.min.js"></script>
+    <script src="/jss/animated.headline.js"></script>
+    <script src="/jss/jquery.magnific-popup.js"></script>
+
+    <!-- Date Picker -->
+    <script src="/jss/gijgo.min.js"></script>
+
+    <!-- Video bg -->
+    <script src="/jss/jquery.vide.js"></script>
+
+    <!-- Nice-select, sticky -->
+    <script src="/jss/jquery.nice-select.min.js"></script>
+    <script src="/jss/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="/jss/jquery.barfiller.js"></script>
+
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="/jss/jquery.counterup.min.js"></script>
+    <script src="/jss/waypoints.min.js"></script>
+    <script src="/jss/jquery.countdown.min.js"></script>
+    <script src="/jss/hover-direction-snake.min.js"></script>
+
+    <!-- contact js -->
+    <script src="/jss/contact.js"></script>
+    <script src="/jss/jquery.form.js"></script>
+    <script src="/jss/jquery.validate.min.js"></script>
+    <script src="/jss/mail-script.js"></script>
+    <script src="/jss/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="/jss/plugins.js"></script>
+    <script src="/jss/main.js"></script>
+
+    <script>
+ 
+
+        function getCookie(name) {
+            var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return value ? value[2] : null;
+        }
+
+        let username = getCookie("username");
+        if(username!=null){
+            let login=document.querySelector("#login");
+            login.setAttribute("href","/logout");
+            login.innerHTML="로그아웃";
+        }
+ 
+
+
+    </script>
+
+</body>
+</div>
+
+</html>

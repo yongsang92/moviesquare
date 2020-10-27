@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <stlye>
+        <link rel="stylesheet" href="/css/join.css">
+
+    </stlye>
+
+</head>
+
+<body>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pr-wrap">
+                    <div class="pass-reset">
+                        <label>
+                            Enter the email you signed up with</label>
+                        <input type="email" placeholder="Email" />
+                        <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                    </div>
+                </div>
+                <div class="wrap">      
+                    <p class="form-title">회원가입</p>
+                    <form class="login" method="POST" action="/joinhandler">
+                        <input type="text" id="id" name="name" placeholder="아이디(특수문자 제외 )" required />
+                        <input type="password" id="pw1" name="pw" placeholder="비밀번호(특수문자 제외 )" required />
+                        <input type="password" id="pw2" placeholder="비밀번호 확인" required />
+                        <input type="submit" value="회원가입" class="btn btn-success btn-sm" />
+                        <csrf disabled="true"/> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <script>
+       function getCookie(name) {
+            var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return value ? value[2] : null;
+        }
+        console.log(getCookie("Username"));
+
+        // 공백 확인
+        function checkSpace(str) {
+            if (str.search(/\s/) != -1) {
+                alert("공백이 포함되어있습니다");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // 특수 문자 확인
+        function checkSpecial(str) {
+            var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+            if (special_pattern.test(str) == true) {
+                alert("특수 문자가 포함되어있습니다");
+                return true;
+            }
+            else {
+                return false;
+            }             
+        }
+
+        $("#id").blur(function () {
+            let value = document.querySelector("#id").value;
+            if (checkSpace(value)) {
+                document.querySelector("#id").value = "";
+            }
+            if(checkSpecial(value)){
+                document.querySelector("#id").value = "";
+            }
+        });
+
+        $("#pw1").blur(function () {
+            let value = document.querySelector("#pw1").value;
+            if (checkSpace(value)) {
+                document.querySelector("#pw1").value = "";
+            }  if(checkSpecial(value)){
+                document.querySelector("#pw1").value = "";
+            }
+        });
+
+        ///////////////////////////////////////////////////////  
+
+        function match(pw1, pw2) {
+
+            if (!(pw1 == pw2)) {
+                alert("비밀번호가 일치하지 않습니다");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        $("#pw2").blur(function () {
+            let value = document.querySelector("#pw1").value;
+            let value2 = document.querySelector("#pw2").value;
+            if (match(value, value2)) {
+                document.querySelector("#pw2").value = "";
+            }
+        });
+
+        ///////////////////////////////////////////////////////
+
+        $(document).ready(function () {
+            $('.forgot-pass').click(function (event) {
+                $(".pr-wrap").toggleClass("show-pass-reset");
+            });
+
+            $('.pass-reset-submit').click(function (event) {
+                $(".pr-wrap").removeClass("show-pass-reset");
+            });
+        });
+    </script>
+         
+</body>
+
+</html>
