@@ -12,5 +12,5 @@ spring:
                 encrypt.enabled: false
                 git:
                     uri: https://github.com/yongsang92/movieconfig
-                    search-paths: koreaservice, japanservice
+                    search-paths: koreaservice, japanservice,marvelservice,memberservice,americaservice,moviesquareservice
                 

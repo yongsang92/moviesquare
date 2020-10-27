@@ -30,6 +30,7 @@ public class BaseController {
         return MovieServices.getMovie(id);
 
     }
+
     /* 조회수 TOP2 움짤 반환 */
     @GetMapping("/trending")
     @ResponseBody
