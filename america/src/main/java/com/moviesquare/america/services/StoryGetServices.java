@@ -5,6 +5,8 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
+import com.moviesquare.america.models.Story;
+import com.moviesquare.america.repository.StoryRepo;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

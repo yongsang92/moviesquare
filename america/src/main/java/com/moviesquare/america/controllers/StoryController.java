@@ -1,12 +1,12 @@
-package com.usa.movie.controllers;
+package com.moviesquare.america.controllers;
 
 import java.io.IOException;
 import java.util.List;
 
-import com.usa.movie.models.Movie;
-import com.usa.movie.models.Story;
-import com.usa.movie.services.MovieServices;
-import com.usa.movie.services.StoryGetServices;
+import com.moviesquare.america.models.Movie;
+import com.moviesquare.america.models.Story;
+import com.moviesquare.america.services.MovieServices;
+import com.moviesquare.america.services.StoryGetServices;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

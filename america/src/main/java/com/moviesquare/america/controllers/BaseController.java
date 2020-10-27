@@ -1,12 +1,12 @@
-package com.usa.movie.controllers;
+package com.moviesquare.america.controllers;
 import java.util.List;
 
-
+import com.moviesquare.america.models.Movie;
+import com.moviesquare.america.services.MovieServices;
 
 import java.io.IOException;
 
-import com.moviesquare.america.movie.models.Movie;
-import com.moviesquare.america.movie.services.MovieServices;
+
 
 
 import org.springframework.stereotype.Controller;

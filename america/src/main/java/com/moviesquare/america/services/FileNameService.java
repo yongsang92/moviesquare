@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class FileNameService {
 
     // TODO : 수정하기
-    private String uploadLocation = "C:\\Download\\ffmpeg\\upload\\"; // 이건 무조건 바꿔야 한다 위치를 하드 코딩하면 사단 난다
+    private String uploadLocation = "C:\\Download\\ffmpeg\\upload\\"; // TODO WARNING : 이건 무조건 바꿔야 한다 위치를 하드 코딩하면 사단 난다
 
     public String createNewFileName(String originfileName) {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");

@@ -1,10 +1,9 @@
-package com.usa.movie.controllers;
-
+package com.moviesquare.america.controllers;
 import javax.transaction.Transactional;
 
-import com.usa.movie.converter.MovieDTO;
-import com.usa.movie.converter.StoryDTO;
-import com.usa.movie.services.SaveServices;
+import com.moviesquare.america.converter.MovieDTO;
+import com.moviesquare.america.converter.StoryDTO;
+import com.moviesquare.america.services.SaveServices;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

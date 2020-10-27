@@ -1,0 +1,6 @@
+spring: 
+    application.name : americaservice
+    profiles.active : default
+    cloud.config.uri: http://localhost:8888
+
+management.endpoints.web.exposure.include : health,metrics,env
