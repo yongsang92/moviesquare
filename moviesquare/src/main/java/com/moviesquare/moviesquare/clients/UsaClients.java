@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-@FeignClient(name = "usaservice")
+@FeignClient(name = "americaservice")
 public interface UsaClients {
 
     /* 가장 기본 3개 메서드 */

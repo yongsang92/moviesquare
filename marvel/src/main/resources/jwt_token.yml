@@ -1,0 +1,6 @@
+application.jwt.secretKey: appleisdeliciousbananaislongtrainisfastairplane
+application.jwt.tokenPrefix: Bearer 
+application.jwt.jwtheader: X-AUTHORIZATION-TOKEN
+
+
+
