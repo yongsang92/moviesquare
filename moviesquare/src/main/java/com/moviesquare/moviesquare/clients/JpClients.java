@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
-@FeignClient(name="japan")
+@FeignClient(name="japanservice")
 public interface JpClients {
 
     @GetMapping(value = "jp/movie/{id}", consumes = "application/json")

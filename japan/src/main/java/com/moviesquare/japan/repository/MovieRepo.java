@@ -1,8 +1,7 @@
 package com.moviesquare.japan.repository;
-
 import java.util.List;
 
-import com.moviesquare.japan.model.Movie;
+import com.moviesquare.japan.models.Movie;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

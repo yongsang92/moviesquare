@@ -1,13 +1,16 @@
-package com.moviesquare.japan.model;
+package com.moviesquare.japan.models;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import lombok.Getter;
@@ -21,26 +24,23 @@ import lombok.ToString.Exclude;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Movie {
-
+public class Story extends Time {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     Integer id;
+    String title,mainImgPath;
     
-    String title,imgPath,tags,comments;
     @Transient
     byte[] imgbyteArray;
 
-    @ManyToOne
-    @JoinColumn(name="STORY_ID")
+    @OneToMany(mappedBy = "story",cascade = CascadeType.PERSIST)
+    @JsonIgnore
     @Exclude
-    Story story;
+    List<Movie> movies=new ArrayList<>();
+
+    public void addMovie(Movie movie){
+        movies.add(movie);
+        movie.setStory(this);
+    }
     
-  
-    @Column(name="count")
-    Long count=0L;
-
-    @Transient
-    String from;
-
 }

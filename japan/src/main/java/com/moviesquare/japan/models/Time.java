@@ -1,4 +1,5 @@
-package com.moviesquare.japan.model;
+package com.moviesquare.japan.models;
+
 import java.time.LocalDateTime;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
@@ -15,6 +16,6 @@ public abstract class Time{
     private LocalDateTime regdate;
 
     @UpdateTimestamp
-    private LocalDateTime updatedate; 
+    private LocalDateTime updatedate;
 
 }
