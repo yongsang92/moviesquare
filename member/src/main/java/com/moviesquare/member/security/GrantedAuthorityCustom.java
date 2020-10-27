@@ -1,4 +1,4 @@
-package com.member.www.security;
+package com.moviesquare.member.security;
 
 import org.springframework.security.core.GrantedAuthority;
 

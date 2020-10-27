@@ -1,7 +1,7 @@
-package com.member.www.security;
+package com.moviesquare.member.security;
 import javax.crypto.SecretKey;
 
-import com.member.www.properties.JwtConfig;
+import com.moviesquare.member.properties.JwtConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

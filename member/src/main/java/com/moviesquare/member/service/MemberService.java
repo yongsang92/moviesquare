@@ -1,12 +1,11 @@
-package com.member.www.service;
-
+package com.moviesquare.member.service;
 import java.util.Optional;
 
 
-import com.member.www.model.Member;
-import com.member.www.model.MemberDto;
-import com.member.www.model.MemberRepo;
-import com.member.www.role.Role;
+import com.moviesquare.member.model.Member;
+import com.moviesquare.member.model.MemberDto;
+import com.moviesquare.member.model.MemberRepo;
+import com.moviesquare.member.role.Role;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;

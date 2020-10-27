@@ -1,5 +1,4 @@
-package com.member.www.role;
-
+package com.moviesquare.member.role;
 import java.util.Set;
 import java.util.stream.Collectors;
 

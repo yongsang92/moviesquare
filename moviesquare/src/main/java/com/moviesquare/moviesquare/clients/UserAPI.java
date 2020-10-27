@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("loginservice")
+@FeignClient("memberservcie")
 public interface UserAPI {
 
     /* 로그인에 성공하면 JWT를 반환받는다 */

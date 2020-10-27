@@ -1,14 +1,13 @@
-package com.member.www.controller;
-
+package com.moviesquare.member.controller;
 
 import java.util.Set;
 
-import com.member.www.model.MemberDto;
-import com.member.www.security.AuthenticationCustom;
-import com.member.www.security.AuthenticationRequest;
-import com.member.www.security.GrantedAuthorityCustom;
-import com.member.www.service.JwtService;
-import com.member.www.service.MemberService;
+import com.moviesquare.member.model.MemberDto;
+import com.moviesquare.member.security.AuthenticationCustom;
+import com.moviesquare.member.security.AuthenticationRequest;
+import com.moviesquare.member.security.GrantedAuthorityCustom;
+import com.moviesquare.member.service.JwtService;
+import com.moviesquare.member.service.MemberService;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

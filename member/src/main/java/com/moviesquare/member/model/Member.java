@@ -1,5 +1,4 @@
-package com.member.www.model;
-
+package com.moviesquare.member.model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -7,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.member.www.role.Role;
+import com.moviesquare.member.role.Role;
 
 import lombok.Builder;
 import lombok.Getter;

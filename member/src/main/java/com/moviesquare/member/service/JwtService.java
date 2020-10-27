@@ -1,5 +1,4 @@
-package com.member.www.service;
-
+package com.moviesquare.member.service;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -9,12 +8,10 @@ import java.util.stream.Collectors;
 
 import javax.crypto.SecretKey;
 
-import com.member.www.properties.JwtConfig;
-import com.member.www.security.AuthenticationCustom;
-import com.member.www.security.GrantedAuthorityCustom;
+import com.moviesquare.member.properties.JwtConfig;
+import com.moviesquare.member.security.AuthenticationCustom;
+import com.moviesquare.member.security.GrantedAuthorityCustom;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;

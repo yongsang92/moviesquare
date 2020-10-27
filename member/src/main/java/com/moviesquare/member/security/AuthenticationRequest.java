@@ -1,5 +1,4 @@
-package com.member.www.security;
-
+package com.moviesquare.member.security;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,4 @@
-package com.member.www.properties;
-
+package com.moviesquare.member.properties;
 import com.google.common.net.HttpHeaders;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;

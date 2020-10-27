@@ -1,4 +1,4 @@
-package com.member.www.model;
+package com.moviesquare.member.model;
 
 import lombok.Data;
 

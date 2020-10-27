@@ -1,0 +1,5 @@
+application.jwt.secretKey: appleisdeliciousbananaislongtrainisfastairplane
+application.jwt.tokenExpirationAfterDays: 2
+
+
+

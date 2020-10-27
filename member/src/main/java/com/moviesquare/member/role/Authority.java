@@ -1,5 +1,4 @@
-package com.member.www.role;
-
+package com.moviesquare.member.role;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

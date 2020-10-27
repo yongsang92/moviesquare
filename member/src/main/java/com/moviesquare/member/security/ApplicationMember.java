@@ -1,7 +1,7 @@
-package com.member.www.security;
+package com.moviesquare.member.security;
 import java.util.Set;
 
-import com.member.www.model.Member;
+import com.moviesquare.member.model.Member;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

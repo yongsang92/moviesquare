@@ -1,8 +1,8 @@
-package com.member.www.security;
+package com.moviesquare.member.security;
 
-import com.member.www.model.Member;
-import com.member.www.model.MemberRepo;
-import com.member.www.service.MemberService;
+
+import com.moviesquare.member.model.Member;
+import com.moviesquare.member.model.MemberRepo;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

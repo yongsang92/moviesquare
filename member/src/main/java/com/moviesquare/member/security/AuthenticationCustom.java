@@ -1,11 +1,7 @@
-package com.member.www.security;
-
+package com.moviesquare.member.security;
 import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
