@@ -35,12 +35,13 @@
 
 
         }
-         h1 {
+
+        h1 {
             color: white;
             font-size: small;
             text-align: start;
 
-
+  
         }
     </style>
 </head>
@@ -51,13 +52,11 @@
     <div th:insert="~{main/wall::wall}"></div>
 
     <div th:insert="~{main/hotgifs::hotgifs}"></div>
-    <div th:insert="~{main/wall::wall}"></div>
 
-    <div th:insert="~{main/wall::wall}"></div>
+    <div th:insert="~{main/brandnew::brandnew}"></div>
     <div class="gifs"></div>
 
     <div th:insert="~{main/wall::wall}"></div>
-
     <div th:insert="~{header_footer/footer::footer}"></div>
 
     <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
@@ -155,8 +154,10 @@
                                     let story = data[i];
                                     let dfv = document.createElement("dfv"); // dfv = div for video
                                     dfv.setAttribute("width", 248);
+                                    dfv.setAttribute("class", "stories");
+
                                     let aTag = document.createElement("a");
-                                    aTag.setAttribute("href", "http://localhost:8080/" + story.from + "/story/" + story.id);
+                                    aTag.setAttribute("href", "http://localhost:8080/main/story/" + story.from + "/" + story.id);
 
                                     let video = document.createElement("video");
                                     video.setAttribute("width", 248);
@@ -170,15 +171,19 @@
                                     source.setAttribute("type", "video/mp4");
                                     source.setAttribute("class", "lazy lazy" + i % 5);
 
+                                    let title = document.createElement("span"); // 추가 
+                                    title.setAttribute("class", "overlay-desc"); // 추가 
+                                    let h1 = document.createElement("h1"); // 추가 
+                                    h1.innerHTML = story.title; // 추가 
+                                    title.appendChild(h1); // 추가 
+
                                     video.appendChild(source);
 
                                     dfv.appendChild(video);
+                                    dfv.appendChild(title);
 
-                                    aTag.appendChild(dfv);
-
+                                    aTag.appendChild(dfv);  
                                     gifs.appendChild(aTag);
-
-
 
 
                                     lastId = story.id;

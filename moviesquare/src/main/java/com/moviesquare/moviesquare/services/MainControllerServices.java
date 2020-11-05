@@ -89,6 +89,16 @@ public class MainControllerServices {
         return result;
     }
 
+    public List<Movie> getBrandnewGifs() {
+        List<Movie> result = new ArrayList<>();
+        result.addAll(marvel.getBrandnewGifs());
+        result.addAll(kr.getBrandnewGifs());
+        result.addAll(jp.getBrandnewGifs());
+        result.addAll(usa.getBrandnewGifs());
+        return result;
+    }
+
+
     public List<Story> getRelStories(Integer id,String from){
         switch (from) {
             case "korea":

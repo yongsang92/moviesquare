@@ -50,6 +50,13 @@ public class MainController {
 
     }
 
+    @GetMapping("/brandnew")
+    @ResponseBody
+    public List<Movie> getBrandnew() {
+        return services.getBrandnewGifs();
+
+    }
+
     // TODO: 스토리 클릭 로직
     // 스토리 화면 하단에 스토리 보다 먼저 생성된 스토리 5개를 가져와야 된다
     @GetMapping("/story/{from}/{id}")

@@ -41,6 +41,14 @@ public class BaseController {
         return MovieServices.getTrending();
     }
 
+     /* 새로운거 2개 움짤 반환 */
+     @GetMapping("/brandnew")
+     @ResponseBody
+     public List<Movie> getBrandnew() throws IOException {
+         return MovieServices.getBrandnew();
+     }
+ 
+
     /* 전체 개수 반환 */
     @GetMapping("/total")
     @ResponseBody

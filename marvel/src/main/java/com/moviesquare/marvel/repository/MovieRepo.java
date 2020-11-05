@@ -17,5 +17,5 @@ public interface MovieRepo extends CrudRepository<Movie,Integer> {
     @Query("select j from Movie j where j.id in ?1")
     List<Movie> findAllWithPaging(List<Integer>Ids, Pageable paging);
     List<Movie> findTop2ByOrderByCountDesc();
-
+    List<Movie> findTop2ByOrderByIdDesc();
 }

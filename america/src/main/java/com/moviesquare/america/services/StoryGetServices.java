@@ -52,7 +52,7 @@ public class StoryGetServices {
     }
     
     public List<Story> getOldStories(Integer id) throws IOException {
-        Pageable paging=PageRequest.of(0,5,Sort.Direction.ASC,"id");
+        Pageable paging=PageRequest.of(0,5,Sort.Direction.DESC,"id");
         List<Story> result=storyRepo.findByIdLessThan(id,paging);
         imgsTobyteArray(result);
         return result;

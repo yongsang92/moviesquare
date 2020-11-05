@@ -34,6 +34,7 @@ public class Tag {
     Long count=0L;
  
     @OneToMany(mappedBy = "tag")
+    @ToString.Exclude
     List<Categories> categories=new ArrayList<>();
     
 }

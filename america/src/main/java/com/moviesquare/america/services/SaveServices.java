@@ -51,7 +51,6 @@ public class SaveServices {
 
             Optional<Tag> optionalTag = tagRepo.findTagByTag(tag.trim());
             optionalTag.ifPresentOrElse(tagEntity -> {
-                System.out.println(tagEntity.getTag());
                 for (Categories c : tagEntity.getCategories()) {
                     System.out.println(c);
                 }
@@ -103,9 +102,7 @@ public class SaveServices {
             movie.setTags(tags[i].trim());
             movie.setImgPath(fileNameService.getOutputPath());
             movies.add(movie);
-            System.out.println("movie info print: " + movie);
             String[] tagSplit=tags[i].split(",");
-            System.out.println("movie's tags");
             for (String str : tagSplit) {
                 String tag=str.trim();
                 Optional<Tag> optionalTag = tagRepo.findTagByTag(tag);

@@ -1,4 +1,5 @@
 package com.moviesquare.japan.controller;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class BaseController {
     @GetMapping("/movie/{id}")
     @ResponseBody
     public Movie getMovie(@PathVariable Integer id) throws IOException {
-      log.debug(" service call id: {}",id);
+        log.debug(" service call id: {}", id);
         return MovieServices.getMovie(id);
 
     }
@@ -39,12 +40,18 @@ public class BaseController {
 
     }
 
+    /* 새로운거 2개 움짤 반환 */
+    @GetMapping("/brandnew")
+    @ResponseBody
+    public List<Movie> getBrandnew() throws IOException {
+        return MovieServices.getBrandnew();
+    }
 
     /* 전체 조회 */
     @GetMapping("/movies")
     @ResponseBody
-    public List<Movie> getMovies(@RequestParam(defaultValue ="0") Integer page) throws IOException {
-        
+    public List<Movie> getMovies(@RequestParam(defaultValue = "0") Integer page) throws IOException {
+
         return MovieServices.getMovies(page);
 
     }
@@ -55,7 +62,5 @@ public class BaseController {
     public int getTotal() throws IOException {
         return MovieServices.getTotal();
     }
-
-
 
 }

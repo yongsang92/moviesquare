@@ -19,4 +19,7 @@ public interface MovieRepo extends CrudRepository<Movie,Integer> {
 
 
     List<Movie> findTop2ByOrderByCountDesc();
+
+    List<Movie> findTop2ByOrderByIdDesc();
+
 }

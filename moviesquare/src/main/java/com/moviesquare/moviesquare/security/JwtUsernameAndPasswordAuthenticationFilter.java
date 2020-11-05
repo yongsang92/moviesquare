@@ -51,7 +51,7 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
             cookie.setPath("/");
             response.addCookie(cookie);
 
-            Authentication authentication = new UsernamePasswordAuthenticationToken("dasdasd",null,null);
+            Authentication authentication = new UsernamePasswordAuthenticationToken(name,null,null);
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 

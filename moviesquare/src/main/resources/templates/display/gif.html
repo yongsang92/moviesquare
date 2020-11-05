@@ -133,9 +133,9 @@
             let aTag = document.createElement("a");
             aTag.setAttribute("data-animation", "fadeInLeft");
             aTag.setAttribute("data-delay", "1s");
-            aTag.setAttribute("href", "http://localhost:8080/by?tag=" + tags[i]);
+            aTag.setAttribute("href", "http://localhost:8080/by?tag="+tags[i].trim());
             aTag.setAttribute("class", "btn radius-btn");
-
+ 
             aTag.innerHTML = "#" + tags[i];
 
             let div = document.createElement("div");

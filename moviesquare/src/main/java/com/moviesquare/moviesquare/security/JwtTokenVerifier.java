@@ -1,4 +1,5 @@
 package com.moviesquare.moviesquare.security;
+
 import java.io.IOException;
 import java.util.Set;
 
@@ -32,9 +33,7 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
 
         log.info("JwtTokenVerifier is actived");
 
-                
-
-        if (request.getRequestURI().startsWith("/makestory") || request.getRequestURI().startsWith("/makegif")) {
+        if (request.getRequestURI().startsWith("/uploadgif") || request.getRequestURI().startsWith("/uploadStory")) {
             log.info("token verification is activatirng");
             Cookie[] cookies = request.getCookies();
             String token = "";
@@ -67,9 +66,41 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
                 throw new IllegalStateException("Token %s cannot be trusted");
             }
             filterChain.doFilter(request, response); // 다음 단계로 전달
-        } else {
-            filterChain.doFilter(request, response); // 다음 단계로 전달
+        }
+        if (request.getRequestURI().startsWith("/makestory") || request.getRequestURI().startsWith("/makegif")) {
+            log.info("token verification is activatirng");
+            Cookie[] cookies = request.getCookies();
+            String token = "";
 
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("X-AUTHORIZATION-TOKEN"))
+                        token = cookie.getValue();
+                }
+            }
+
+            if (Strings.isNullOrEmpty(token)) {
+                response.sendRedirect("/loginhandler");
+                return;
+            }
+
+            String username = "";
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username"))
+                    username = cookie.getValue();
+            }
+
+            try {
+                Set<GrantedAuthorityCustom> authorities = userAPI.parseToken(token);
+                Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, authorities);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+            // 토큰 검증 실패 로직
+            catch (JwtException e) {
+                throw new IllegalStateException("Token %s cannot be trusted");
+            }
+
+            filterChain.doFilter(request, response); // 다음 단계로 전달
         }
     }
 

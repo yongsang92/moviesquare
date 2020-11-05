@@ -51,6 +51,17 @@ public class MovieServices {
         setFrom(result);
         return result;
     }
+ 
+      /* 새로운 움짤 2개 반환 */
+      public List<Movie> getBrandnew() throws IOException {
+        List<Movie> result = movieRepo.findTop2ByOrderByIdDesc();
+        imgsTobyteArray(result);
+        setFrom(result);
+        return result;
+    }
+
+
+
     public void setFrom(List<Movie> movies){
         for(Movie movie: movies){
             movie.setFrom("usa");

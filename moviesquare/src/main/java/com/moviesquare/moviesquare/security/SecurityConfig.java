@@ -23,8 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 
             .and()
             .authorizeRequests() 
-         
+                .antMatchers("/makegif").hasAnyRole("OLDBIE","NEWBIE")
                 .antMatchers("/makestory").hasRole("OLDBIE")
+          
+                .antMatchers("/uploadgif").hasAnyRole("OLDBIE","NEWBIE")
+                .antMatchers("/uploadStory").hasRole("OLDBIE")
+
             .and()
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(userAPI)) 
                 .addFilterAfter(new JwtTokenVerifier(userAPI), JwtUsernameAndPasswordAuthenticationFilter.class) 
@@ -46,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/main/**")
             .antMatchers("/korea/**","/usa/**","/marvel/**","/usa/**","/japan/**")
             .antMatchers("/join/**")
+            // .antMatchers("/uploadgif")
             .antMatchers("/quiz/**")
             .antMatchers("/loginhandler")
             .antMatchers("/logout")

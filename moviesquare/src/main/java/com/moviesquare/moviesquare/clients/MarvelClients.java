@@ -39,6 +39,9 @@ public interface MarvelClients {
     @GetMapping(value = "marvel/trending", consumes = "application/json")
     List<Movie> getTrendingMovie();
 
+    @GetMapping(value = "marvel/brandnew", consumes = "application/json")
+    List<Movie> getBrandnewGifs();
+
     @PostMapping(value = "makegif", consumes = "multipart/form-data")
     void makeGif(@RequestHeader("X-AUTHORIZATION-TOKEN")String jwt,@RequestParam(name="dto") MovieDTO dto, @RequestPart(name="file") MultipartFile file);
 
