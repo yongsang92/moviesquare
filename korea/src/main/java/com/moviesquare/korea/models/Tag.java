@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 
 
 @Entity
@@ -35,6 +36,7 @@ public class Tag {
     Long count=0L;
 
     @OneToMany(mappedBy = "tag")
+    @ToString.Exclude
     List<Categories> categories=new ArrayList<>();
     
 }

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +30,7 @@ public class Tag {
     String tag;
 
     @OneToMany(mappedBy = "tag")
+    @ToString.Exclude
     List<Categories> categories=new ArrayList<>();
 
     @Column(name="COUNT")

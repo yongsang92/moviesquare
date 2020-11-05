@@ -42,7 +42,7 @@
   <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
   <th:block layout:fragment="script">
     <script th:inline="javascript">
-      let carouselinner2=document.querySelector(".carousel-inner");
+      let carouselinner=document.querySelector(".carousel-inner");
       $(function () {
         $.ajax({
           url: '/main/trending',
@@ -81,7 +81,7 @@
             item.setAttribute("class", "item active");
 
             item.appendChild(row1);
-            carouselinner2.appendChild(item);
+            carouselinner.appendChild(item);
 
 
             let row2 = document.createElement("div");  
@@ -114,7 +114,7 @@
             let item2 = document.createElement("div"); 
             item2.setAttribute("class","item");
             item2.appendChild(row2);
-            carouselinner2.appendChild(item2);
+            carouselinner.appendChild(item2);
           }
         });
       });
