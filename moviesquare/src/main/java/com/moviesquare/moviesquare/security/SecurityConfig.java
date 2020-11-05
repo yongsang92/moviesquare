@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .and()
             .authorizeRequests() 
          
-                .antMatchers("/makestory").hasAnyRole("OLDBIE")
+                .antMatchers("/makestory").hasRole("OLDBIE")
             .and()
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(userAPI)) 
                 .addFilterAfter(new JwtTokenVerifier(userAPI), JwtUsernameAndPasswordAuthenticationFilter.class) 

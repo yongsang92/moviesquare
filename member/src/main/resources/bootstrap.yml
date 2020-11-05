@@ -1,5 +1,5 @@
 spring: 
-    application.name : memberservcie
+    application.name : memberservice
     profiles.active : default
     cloud.config.uri: http://localhost:8888
 
