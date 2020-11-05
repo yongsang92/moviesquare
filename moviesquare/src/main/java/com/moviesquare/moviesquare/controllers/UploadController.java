@@ -38,8 +38,6 @@ public class UploadController {
     @Transactional
     public String makegif(@ModelAttribute("dto") MovieDTO dto, @RequestPart("file") MultipartFile file) {
         
-        System.out.println("asdasdsadasdasd");
-      
         uploadServices.makeGif(dto, file);
 
         return "redirect:/makegif";
